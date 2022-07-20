@@ -7,13 +7,18 @@ jobs:
   publish:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
+      - name: Checkout
+        uses: actions/checkout@v3
       # Add your test steps here if needed...
+      - name: Docker meta
+        id: meta
+        uses: docker/metadata-action@v4
+        with:
+          images: ghcr.io/sinsukehlab/publish-packages/game
+          tags: type=sha
       - name: Build container
         uses: docker/build-push-action@v3
         with:
-          username: sinsukehlab
-          password: ${{ secrets.GITHUB_TOKEN }}
-          registry: docker.pkg.github.com
-          repository: sinsukehlab/publish-packages/game
-          tag_with_sha: true
+          context: .
+          push: true
+          tags: ${{ steps.meta.outputs.tags }}
