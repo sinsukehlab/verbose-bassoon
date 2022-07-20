@@ -7,10 +7,10 @@ jobs:
   publish:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
       # Add your test steps here if needed...
       - name: Build container
-        uses: docker/build-push-action@v1
+        uses: docker/build-push-action@v3
         with:
           username: sinsukehlab
           password: ${{ secrets.GITHUB_TOKEN }}
