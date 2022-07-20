@@ -114,7 +114,7 @@ We will add a `Dockerfile` in this pull request. The `Dockerfile` contains a set
 
 1. In the `cd` branch, create `Dockerfile` at the project root and include:
    ```dockerfile
-   FROM nginx:1.17
+   FROM nginx:1.22
    COPY . /usr/share/nginx/html
    ```
 1. Commit your changes.
